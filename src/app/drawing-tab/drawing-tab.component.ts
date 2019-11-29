@@ -30,7 +30,7 @@ export class DrawingTabComponent implements OnInit {
 
 
 
-  bgURL = window.webkitURL || window.URL;
+  bgURL = (<any>window).webkitURL || window.URL;
 
 
   constructor(public renderer:Renderer, private firestoreService: FirestoreService) { 
