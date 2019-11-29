@@ -1,16 +1,14 @@
 <ons-page>
-        <ons-toolbar>
-            <div class="center">Drawing Page</div>
-            <div class="right"><ons-toolbar-button (click)="changeColour('#efeff4')">Erase</ons-toolbar-button></div>
-        </ons-toolbar>
+
 
         <div class="content" style="overflow: hidden;">
+                
             
                 <canvas #drawingCanvas (touchstart)="startDrawing($event)" (touchmove)="moveDrawing($event)" (touchend)="endDrawing($event)"></canvas>
             
         </div>
 
-        <ons-speed-dial position="bottom left" direction="up">
+        <ons-speed-dial position="top left" direction="down">
                 <ons-fab>
                         <ons-icon icon="md-palette"></ons-icon>
                 </ons-fab>
@@ -18,7 +16,15 @@
                 </ons-speed-dial-item>
         </ons-speed-dial>
 
-        <ons-speed-dial position="bottom right" direction="up">
+        <ons-fab position="top center" (click)="clearBoard()">
+                <ons-icon icon="md-delete"></ons-icon>
+        </ons-fab>
+
+        <ons-fab position="top right" (click)="saveDrawing()">
+                <ons-icon icon="md-save"></ons-icon>
+        </ons-fab>
+
+        <ons-speed-dial position="bottom left" direction="up">
                 <ons-fab>
                         <ons-icon icon="md-brush"></ons-icon>
                 </ons-fab>
@@ -37,10 +43,6 @@
                         <ons-speed-dial-item (click)="changeSize(50)">
                                 <ons-icon icon="md-circle" style="font-size:20px"></ons-icon>
                             </ons-speed-dial-item>
-
-                            <ons-speed-dial-item (click)="saveDrawing()">
-                                    <ons-icon icon="md-save" ></ons-icon>
-                                </ons-speed-dial-item>
 
                             
         </ons-speed-dial>

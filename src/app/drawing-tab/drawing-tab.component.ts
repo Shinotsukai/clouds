@@ -57,6 +57,11 @@ export class DrawingTabComponent implements OnInit {
     this.currentColour = colour;
   }
 
+  clearBoard(){
+    let ctx = this.canvasElement.getContext('2d');
+    ctx.clearRect(0,0, ctx.canvas.width, ctx.canvas.height);
+  }
+
   changeSize(size){
     this.brushSize = size;
   }
