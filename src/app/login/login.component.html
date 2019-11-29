@@ -1,21 +1,11 @@
 <ons-page>
-<ons-toolbar>
-    <div class="center">
-        Welcome to the app
-    </div>
-</ons-toolbar>
 
-<div class="content" style="text-align: center; margin-top: 30px;">
-    <ons-row>
-        <ons-col>
-            Welcome to the app whoaaaaaaah
-        </ons-col>
-    </ons-row>
-
-    <ons-row style="margin-top: 30px;">
-        <ons-col>
-            <ons-button (click)="pushPage()">Login</ons-button>
-        </ons-col>
-    </ons-row>
+<div class="content" style="overflow: hidden;">
+    <img src="../../assets/login.jpg" height="100%">
 </div>
+
+<ons-fab position="bottom center"  (click)="pushPage()">
+    <ons-icon icon="fa-thumbs-up"></ons-icon>
+</ons-fab>
+
 </ons-page>
