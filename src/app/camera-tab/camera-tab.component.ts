@@ -7,7 +7,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class CameraTabComponent implements OnInit {
 
-  @ViewChild('video', {static: false}) video: any;
+  @ViewChild('cameraCap', {static: false}) cameraCap: any;
+  camera: any;
+  
 
   constructor() { }
   
@@ -16,17 +18,29 @@ export class CameraTabComponent implements OnInit {
   ngOnInit() {
   }
 
-  public ngAfterViewInit() {
-    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ audio: false, video: { facingMode: { exact: "environment" } } }).then(stream => {
-            this.video.nativeElement.src = window.URL.createObjectURL(stream);
-            this.video.nativeElement.play();
-        });
-    }
+  ngAfterViewInit() {
+
+    this.camera = this.cameraCap.nativeElement;
+
+    
 }
 
   openCamera(){
+    this.initCamera({audio: false, video: { facingMode: { exact: "environment" } }});
+  }
 
+  initCamera(config:any) {
+    var browser = <any>navigator;
+
+    browser.getUserMedia = (browser.getUserMedia ||
+      browser.webkitGetUserMedia ||
+      browser.mozGetUserMedia ||
+      browser.msGetUserMedia);
+
+    browser.mediaDevices.getUserMedia(config).then(stream => {
+      this.cameraCap.src = window.URL.createObjectURL(stream);
+      this.cameraCap.play();
+    });
   }
 
 }
