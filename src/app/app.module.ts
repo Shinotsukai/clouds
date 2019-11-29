@@ -27,7 +27,7 @@ import { FirestoreService } from './services/firestore.service'
     BrowserModule,
     OnsenModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebase, 'Clouds'),
     AngularFirestoreModule
   ],
   entryComponents:[LoginComponent,ContentWrapperComponent,GalleryTabComponent,DrawingTabComponent],
