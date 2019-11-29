@@ -20,9 +20,22 @@
                 <ons-icon icon="md-delete"></ons-icon>
         </ons-fab>
 
-        <ons-fab position="top right" (click)="saveDrawing()">
-                <ons-icon icon="md-save"></ons-icon>
-        </ons-fab>
+        <ons-speed-dial position="top right" direction="down">
+                        <ons-fab>
+                                <ons-icon icon="md-more"></ons-icon>
+                        </ons-fab>
+                        <ons-speed-dial-item (click)="saveDrawing()" >
+                                        <ons-icon icon="md-save" ></ons-icon>
+                        </ons-speed-dial-item>
+
+                        <ons-speed-dial-item  >
+                                        
+                                        <input #camera type="file" (change)="onFileChange($event)" id="backgroundImg" accept="image/*" capture="environment" hidden>
+                                        <ons-icon icon="md-camera" (click)="camera.click()"></ons-icon>
+                        </ons-speed-dial-item>
+                </ons-speed-dial>
+
+
 
         <ons-speed-dial position="bottom left" direction="up">
                 <ons-fab>

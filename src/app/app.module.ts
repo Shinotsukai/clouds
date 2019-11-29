@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 
 import { FirestoreService } from './services/firestore.service';
 import { CameraTabComponent } from './camera-tab/camera-tab.component'
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CameraTabComponent } from './camera-tab/camera-tab.component'
     OnsenModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase, 'Clouds'),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FormsModule
   ],
   entryComponents:[LoginComponent,ContentWrapperComponent,GalleryTabComponent,DrawingTabComponent,CameraTabComponent],
   providers: [FirestoreService],

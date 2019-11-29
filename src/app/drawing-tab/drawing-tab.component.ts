@@ -29,6 +29,10 @@ export class DrawingTabComponent implements OnInit {
   };
 
 
+
+  bgURL = window.webkitURL || window.URL;
+
+
   constructor(public renderer:Renderer, private firestoreService: FirestoreService) { 
     this.getScreenSize();
 
@@ -38,6 +42,7 @@ export class DrawingTabComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   getScreenSize(event?) {
@@ -51,6 +56,18 @@ export class DrawingTabComponent implements OnInit {
 
     this.renderer.setElementAttribute(this.canvasElement, 'width', this.screenWidth + '');
     this.renderer.setElementAttribute(this.canvasElement, 'height', this.screenHeight + '');
+  }
+
+
+  onFileChange(event){
+    let ctx = this.canvasElement.getContext('2d');
+    var bgweb = this.bgURL.createObjectURL(event.target.files[0]);
+    var backgroundImg = new Image();
+    backgroundImg.onload = function(){
+      ctx.drawImage(backgroundImg,0,0,ctx.canvas.width,ctx.canvas.height)
+    }
+    backgroundImg.src = bgweb;
+    console.log(event);
   }
 
   changeColour(colour){
@@ -103,7 +120,7 @@ export class DrawingTabComponent implements OnInit {
     let newName = new Date().getTime()+'.png';
 
     var data = dataUrl.split(',')[1];
-    let blob = this.b64toBlob(data,'image/png');
+    // let blob = this.b64toBlob(data,'image/png');
 
     this.imageFile.name = newName;
     this.imageFile.image = dataUrl;   
@@ -123,27 +140,26 @@ export class DrawingTabComponent implements OnInit {
   }
 
 
-  b64toBlob(b64Data, contentType) {
-    contentType = contentType || '';
-    var sliceSize = 512;
-    var byteCharacters = atob(b64Data);
-    var byteArrays = [];
+//   b64toBlob(b64Data, contentType) {
+//     contentType = contentType || '';
+//     var sliceSize = 512;
+//     var byteCharacters = atob(b64Data);
+//     var byteArrays = [];
    
-    for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-      var slice = byteCharacters.slice(offset, offset + sliceSize);
+//     for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+//       var slice = byteCharacters.slice(offset, offset + sliceSize);
    
-      var byteNumbers = new Array(slice.length);
-      for (var i = 0; i < slice.length; i++) {
-        byteNumbers[i] = slice.charCodeAt(i);
-      }
+//       var byteNumbers = new Array(slice.length);
+//       for (var i = 0; i < slice.length; i++) {
+//         byteNumbers[i] = slice.charCodeAt(i);
+//       }
    
-      var byteArray = new Uint8Array(byteNumbers);
+//       var byteArray = new Uint8Array(byteNumbers);
    
-      byteArrays.push(byteArray);
-    }
+//       byteArrays.push(byteArray);
+//     }
    
-    var blob = new Blob(byteArrays, { type: contentType });
-    return blob;
-  }
-
-}
+//     var blob = new Blob(byteArrays, { type: contentType });
+//     return blob;
+//   }
+ }
