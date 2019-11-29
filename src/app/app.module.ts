@@ -13,7 +13,8 @@ import { GalleryTabComponent } from './gallery-tab/gallery-tab.component';
 import { DrawingTabComponent } from './drawing-tab/drawing-tab.component';
 import { LoginComponent } from './login/login.component';
 
-import { FirestoreService } from './services/firestore.service'
+import { FirestoreService } from './services/firestore.service';
+import { CameraTabComponent } from './camera-tab/camera-tab.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FirestoreService } from './services/firestore.service'
     ContentWrapperComponent,
     GalleryTabComponent,
     DrawingTabComponent,
-    LoginComponent
+    LoginComponent,
+    CameraTabComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,7 @@ import { FirestoreService } from './services/firestore.service'
     AngularFireModule.initializeApp(environment.firebase, 'Clouds'),
     AngularFirestoreModule
   ],
-  entryComponents:[LoginComponent,ContentWrapperComponent,GalleryTabComponent,DrawingTabComponent],
+  entryComponents:[LoginComponent,ContentWrapperComponent,GalleryTabComponent,DrawingTabComponent,CameraTabComponent],
   providers: [FirestoreService],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

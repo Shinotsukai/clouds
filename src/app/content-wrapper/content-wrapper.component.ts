@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GalleryTabComponent } from '../gallery-tab/gallery-tab.component';
 import { DrawingTabComponent } from '../drawing-tab/drawing-tab.component';
+import { CameraTabComponent } from '../camera-tab/camera-tab.component';
 
 @Component({
   selector: 'ons-page[content-wrapper]',
@@ -13,6 +14,7 @@ export class ContentWrapperComponent implements OnInit {
 
   galleryTab = GalleryTabComponent;
   drawingTab = DrawingTabComponent;
+  cameraTab = CameraTabComponent;
 
   ngOnInit() {
   }
