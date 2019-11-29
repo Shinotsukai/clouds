@@ -1,0 +1,25 @@
+<ons-page>
+    <ons-toolbar>
+        <div class="center">Gallery Page</div>
+    </ons-toolbar>
+
+    <div *ngIf="galleryImages?.length >0;else noImages">
+
+            <ons-card *ngFor="let galleryImage of galleryImages">
+                <div class="cardHeader" style="width: 100%; text-align: center;">
+                        {{galleryImage.name}}
+                </div>
+                <div style="width: 100%; text-align: center;">
+                <img src={{galleryImage.image}} height="250px">
+                </div>
+                <div class="deleteCard" style="width: 100%; text-align: center; margin-top: 15px;">
+                <ons-button  modifier="large" (click)="deleteImage(galleryImage)">Delete</ons-button>
+                </div>
+            </ons-card>
+    </div>
+
+    <ng-template #noImages>
+            <ons-card>No Images Saved</ons-card>
+    </ng-template>
+    
+</ons-page>
