@@ -9,9 +9,19 @@
                 <div class="cardHeader" style="width: 100%; text-align: center;">
                         {{galleryImage.name}}
                 </div>
+
                 <div style="width: 100%; text-align: center;">
                 <img src={{galleryImage.image}} height="250px">
                 </div>
+                <ons-list *ngIf="galleryImage.comment?.length >0;else noComment">
+                        
+                                <ons-list-item *ngFor="let comment of galleryImage.comment">{{comment}}</ons-list-item>
+                            
+                </ons-list>
+
+                <ng-template #noComment>
+                        <ons-card>No comments added</ons-card>
+                </ng-template>
                 <div class="deleteCard" style="width: 100%; text-align: center; margin-top: 15px;">
                 <ons-button  modifier="large" (click)="deleteImage(galleryImage)">Delete</ons-button>
                 </div>
